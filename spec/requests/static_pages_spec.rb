@@ -9,9 +9,14 @@ describe "StaticPages" do
     	expect(page).to have_content('9GAG - Just For Fun')
     end
 
-    it "should have title '9GAG - Just For Fun | Home" do
+    it "should have base title" do
     	visit '/static_pages/home'
-    	expect(page).to have_title("9GAG - Just For Fun | Home")
+    	expect(page).to have_title("9GAG - Just For Fun")
+    end
+
+    it "should not have a custom page title" do
+      visit '/static_pages/home'
+      expect(page).not_to have_title('| Home')
     end
   end
 

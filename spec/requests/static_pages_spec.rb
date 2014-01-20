@@ -2,73 +2,41 @@ require 'spec_helper'
 
 describe "StaticPages" do
 
+  subject { page }
+
   describe "Home page" do
+    before { visit root_path }
     
-    it "should have content '9GAG - Just For Fun'" do
-    	visit '/static_pages/home'
-    	expect(page).to have_content('9GAG - Just For Fun')
-    end
-
-    it "should have base title" do
-    	visit '/static_pages/home'
-    	expect(page).to have_title("9GAG - Just For Fun")
-    end
-
-    it "should not have a custom page title" do
-      visit '/static_pages/home'
-      expect(page).not_to have_title('| Home')
-    end
+    it { should have_content('9GAG') }
+    it { should have_title(full_title('')) }
+    it { should_not have_title('| Home') }
   end
 
   describe "FAQ page" do
+    before { visit faq_path }
 
-  	it "should have content 'FAQ'" do
-  		visit '/static_pages/faq'
-  		expect(page).to have_content('FAQ')
-  	end
-
-  	it "should have title '9GAG - Just For Fun | FAQ'" do
-  		visit '/static_pages/faq'
-  		expect(page).to have_title("9GAG - Just For Fun | FAQ")
-  	end
+  	it { should have_content('FAQ') }
+    it { should have_title(full_title('FAQ')) }
   end
 
   describe "Privacy page" do
+    before { visit privacy_path }
 
-  	it "should have content 'Privacy'" do
-  		visit '/static_pages/privacy'
-  		expect(page).to have_content('Privacy')
-  	end
-
-  	it "should have title '9GAG - Just For Fun | Privacy'" do
-  		visit '/static_pages/privacy'
-  		expect(page).to have_title("9GAG - Just For Fun | Privacy")
-  	end
+    it { should have_content('Privacy') }
+    it { should have_title(full_title('Privacy')) }
   end
 
   describe "Contact page" do
+    before { visit contact_path }
 
-  	it "should have content 'Contact Us'" do
-  		visit '/static_pages/contact'
-  		expect(page).to have_content('Contact Us')
-  	end
-
-  	it "should have title '9GAG - Just For Fun | Contact Us'" do
-  		visit '/static_pages/contact'
-  		expect(page).to have_title("9GAG - Just For Fun | Contact Us")
-    end
+    it { should have_content('Contact Us') }
+    it { should have_title(full_title('Contact Us')) }
   end
 
   describe "About page" do
+    before { visit about_path }
 
-    it "should have content 'About Us'" do
-      visit '/static_pages/about'
-      expect(page).to have_content('About Us')
-    end
-
-    it "should have title '9GAG - Just For Fun | About Us'" do
-      visit '/static_pages/about'
-      expect(page).to have_title("9GAG - Just For Fun | About Us")
-    end
+    it { should have_content('About Us') }
+    it { should have_title(full_title('About Us')) }
   end
 end

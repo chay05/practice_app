@@ -1,5 +1,5 @@
 PracticeApp::Application.routes.draw do
-  get "users/new"
+  resources :users
   root 'static_pages#home'
   match '/faq', to: 'static_pages#faq', via: 'get'
   match '/privacy', to: 'static_pages#privacy', via: 'get'
